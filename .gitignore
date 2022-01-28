@@ -1,0 +1,5 @@
+.env
+screnshoot/
+telegram_bot.py
+test.py
+keys.txt
