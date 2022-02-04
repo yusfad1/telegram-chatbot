@@ -50,7 +50,7 @@ reply_keyboard2 = [
 ]
 markup2 = ReplyKeyboardMarkup(reply_keyboard2, one_time_keyboard=True)
 
-
+#start_function
 def start(update: Update, context: CallbackContext) -> int:
     """Send message on `/start`."""
     # Get user that sent /start and log his name
