@@ -34,7 +34,7 @@ list_code= ['A111',"A112","A113","A114",'A115',"A116","A117","A118"]
 
 logger = logging.getLogger(__name__)
 
-
+# States
 CHOOSING, TYPING_REPLY, TYPING_CHOICE, CHOOSING2= range(4)
 
 reply_keyboard = [
@@ -56,13 +56,9 @@ def start(update: Update, context: CallbackContext) -> int:
     # Get user that sent /start and log his name
     user = update.message.from_user
     logger.info("User %s started the conversation.", user.first_name)
-    # Build InlineKeyboard where each button has a displayed text
-    # and a string as callback_data
-    # The keyboard is a list of button rows, where each row is in turn
-    # a list (hence `[[...]]`).
    
     # Send message with text and appended InlineKeyboard
-    update.message.reply_text(f"👋 Hi {user.first_name}, are intrested in our sevices, choose what you want in the menu bellow 👇:", reply_markup=markup)
+    update.message.reply_text(f"👋 Hi {user.first_name}, are you intrested in our sevices, choose what you want in the menu bellow 👇:", reply_markup=markup)
     # Tell ConversationHandler that we're in state `FIRST` now
     return CHOOSING
 
@@ -103,18 +99,18 @@ def other(update: Update, context: CallbackContext) -> int:
     user_data = context.user_data
 
     update.message.reply_text(
-        f"Deja 3ndk 0 awjah zero, bghiti chi zero akhor!",
+        "Sorry, this is the services that we offre right now 👇:",
         reply_markup=markup
     )
 
-    return ConversationHandler.END
+    return CHOOSING
 
 def end(update: Update, context: CallbackContext) -> int:
     """Display the gathered info and end the conversation."""
     user_data = context.user_data
 
     update.message.reply_text(
-        f"Bye!"
+        f"Bye! (if you want to talk to me just type '/start')"
     )
 
     return ConversationHandler.END
