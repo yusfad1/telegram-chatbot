@@ -179,13 +179,13 @@ def main() -> None:
     dispatcher.add_handler(conv_handler)
 
     # starting webhook and setting it up with heroku app
-    updater.start_webhook(listen="0.0.0.0",
-                            port=(PORT),
-                            url_path=TOKEN)
+    #updater.start_webhook(listen="0.0.0.0",
+    #                        port=(PORT),
+    #                        url_path=TOKEN)
     
-    updater.bot.setWebhook(
-      "https://{}.herokuapp.com/{}".format(APPNAME, TOKEN)
-    )
+    #updater.bot.setWebhook(
+    #  "https://{}.herokuapp.com/{}".format(APPNAME, TOKEN)
+    #)
     # Start the Bot
     updater.start_polling()
 
