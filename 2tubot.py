@@ -145,6 +145,10 @@ def main() -> None:
                     Filters.regex('^Other$'), other
                 ),
                 MessageHandler(
+                    Filters.regex('^End$'),
+                    end,
+                ),
+                MessageHandler(
                     Filters.text, start_over
                 )
             ],
